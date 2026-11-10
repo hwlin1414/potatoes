@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Potatoes VA — a friendly, relaxed virtual airline on IVAO. Fly. Have Fun. Stay Connected.">
+  <meta name="theme-color" content="#101d32">
+  <title>Potatoes VA | Fly. Have Fun. Stay Connected.</title>
+  <style>
+    :root {
+      --navy: #101d32;
+      --navy-2: #172943;
+      --blue: #6db9ff;
+      --cream: #f5f7fb;
+      --ink: #18263a;
+      --muted: #64748b;
+      --white: #fff;
+      --line: #e5eaf1;
+      --radius: 18px;
+      --shadow: 0 14px 35px rgba(16, 29, 50, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .container { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(16, 29, 50, .96);
+      backdrop-filter: blur(10px);
+      color: var(--white);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .nav {
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .brand { color: white; text-decoration: none; font-weight: 800; letter-spacing: .04em; }
+    .nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
+    .nav-links a { color: #dbe7f5; text-decoration: none; font-size: .93rem; }
+    .nav-links a:hover { color: var(--blue); }
+    .hero {
+      color: white; text-align: center; padding: 112px 0 105px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(109,185,255,.24), transparent 55%),
+        linear-gradient(135deg, #101d32, #1b3858 65%, #10243b);
+    }
+    .eyebrow {
+      display: inline-block; color: #b8dcff; text-transform: uppercase;
+      letter-spacing: .16em; font-size: .78rem; font-weight: 700;
+      margin-bottom: 14px;
+    }
+    h1 { font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.08; margin: 0 0 18px; }
+    .hero p { max-width: 680px; margin: 0 auto 28px; color: #d7e4f2; font-size: 1.12rem; }
+    .actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 11px 20px; border-radius: 999px;
+      font-weight: 700; text-decoration: none; transition: transform .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--blue); color: #10213a; }
+    .btn-outline { border: 1px solid rgba(255,255,255,.55); color: white; }
+    section { padding: 76px 0; scroll-margin-top: 80px; }
+    .section-heading { text-align: center; margin: 0 auto 38px; max-width: 720px; }
+    .section-heading h2 { color: var(--navy); font-size: clamp(1.9rem, 4vw, 2.6rem); margin: 0 0 8px; }
+    .section-heading p { color: var(--muted); margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 28px; align-items: stretch; }
+    .panel, .card, .rule {
+      background: white; border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .panel { padding: 30px; }
+    .panel h3 { margin-top: 0; color: var(--navy); }
+    .callsigns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .callsign {
+      padding: 17px 10px; border-radius: 14px; text-align: center;
+      background: #edf5fd;
+    }
+    .callsign strong { display: block; color: var(--navy); font-size: 1.45rem; }
+    .callsign span { color: var(--muted); font-size: .82rem; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { padding: 25px; }
+    .card .symbol { font-size: 1.7rem; }
+    .card h3 { margin: 8px 0 5px; color: var(--navy); }
+    .card p { color: var(--muted); margin: 0; }
+    .rules { display: grid; gap: 12px; max-width: 850px; margin: auto; }
+    .rule { padding: 0 20px; box-shadow: none; }
+    .rule summary { cursor: pointer; padding: 17px 0; color: var(--navy); font-weight: 750; }
+    .rule p { color: var(--muted); margin: 0 0 18px; }
+    .join-wrap {
+      background: var(--navy); color: white; border-radius: 26px;
+      padding: clamp(26px, 5vw, 48px); display: grid;
+      grid-template-columns: 1fr 1fr; gap: 38px;
+    }
+    .join-wrap h2 { margin-top: 0; font-size: 2rem; }
+    .join-wrap p, .join-wrap li { color: #d4e0ee; }
+    .join-wrap ul, .join-wrap ol { padding-left: 21px; }
+    .join-wrap .btn-outline { border-color: #8aa6c4; }
+    .contact { text-align: center; }
+    .contact a { color: #1768a8; font-weight: 700; }
+    footer { background: #0b1525; color: #b8c6d8; text-align: center; padding: 25px 0; font-size: .9rem; }
+    footer p { margin: 4px 0; }
+    @media (max-width: 760px) {
+      .nav { padding: 13px 0; align-items: flex-start; flex-direction: column; gap: 8px; }
+      .nav-links { gap: 13px; }
+      .hero { padding: 82px 0 78px; }
+      .about-grid, .join-wrap { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+      .callsigns { grid-template-columns: 1fr; }
+      section { padding: 58px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#home">POTATOES VA</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#values">Our Values</a>
+        <a href="#rules">Rules</a>
+        <a href="#join">Join Us</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <span class="eyebrow">Virtual Airline · IVAO</span>
+        <h1>Fly. Have Fun.<br>Stay Connected.</h1>
+        <p>Fly with us on IVAO, explore the world, and enjoy a relaxed and friendly virtual airline experience.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#join">Join Potatoes VA</a>
+          <a class="btn btn-outline" href="https://ivao.aero/" target="_blank" rel="noopener">Visit IVAO</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>About Us</h2>
+          <p>A virtual airline built around the joy of flight and a friendly community.</p>
+        </div>
+        <div class="about-grid">
+          <article class="panel">
+            <h3>Welcome to Potatoes VA</h3>
+            <p>Potatoes VA is a virtual airline created by flight simulation enthusiasts who simply enjoy flying.</p>
+            <p>Our goal is simple: to provide a friendly, relaxed and enjoyable environment where pilots can fly together, discover new places, and experience online aviation on IVAO.</p>
+            <p>Whether you are an experienced online pilot or just getting started, you are welcome at Potatoes VA.</p>
+          </article>
+          <aside class="panel">
+            <h3>Our Callsigns</h3>
+            <div class="callsigns">
+              <div class="callsign"><strong>PPP</strong><span>Potatoes</span></div>
+              <div class="callsign"><strong>PTX</strong><span>Potatoes Cargo</span></div>
+              <div class="callsign"><strong>GPP</strong><span>Golden Potatoes</span></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="values">
+      <div class="container">
+        <div class="section-heading">
+          <h2>What We Believe In</h2>
+          <p>Three simple ideas shape the Potatoes VA community.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="symbol">✈️</div><h3>Fun First</h3><p>Enjoy the hobby without unnecessary pressure.</p></article>
+          <article class="card"><div class="symbol">🌍</div><h3>Fly Together</h3><p>We encourage group flights, events and community interaction.</p></article>
+          <article class="card"><div class="symbol">🤝</div><h3>Respect the Network</h3><p>We respect IVAO's rules, controllers and fellow pilots.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Rules &amp; Regulations</h2>
+          <p>Please read and follow these rules as a member of Potatoes VA.</p>
+        </div>
+        <div class="rules">
+          <details class="rule"><summary>1. General</summary><p>Potatoes VA is a virtual aviation community created for flight simulation purposes only. Membership is free and does not represent employment, commercial aviation or any real-world airline operation.</p></details>
+          <details class="rule"><summary>2. Network Rules</summary><p>All members must comply with the applicable rules, regulations and policies of IVAO while connected to their networks. Where a network rule conflicts with a Potatoes VA rule, the applicable network rule takes priority.</p></details>
+          <details class="rule"><summary>3. Conduct</summary><p>Members are expected to behave respectfully and professionally. Harassment, discrimination, threats, disruptive behavior, or intentionally interfering with network operations is not permitted.</p></details>
+          <details class="rule"><summary>4. Flight Operations</summary><p>Members should operate flights in a realistic and responsible manner. Pilots must follow applicable air traffic control instructions and network procedures while connected.</p></details>
+          <details class="rule"><summary>5. Callsigns</summary><p>Members should use the callsign(s) registered for Potatoes VA when operating VA flights on the applicable network.</p></details>
+          <details class="rule"><summary>6. Copyright &amp; Software</summary><p>Pirated software, unauthorized copyrighted material, charts, documents, aircraft files or other protected material must not be distributed through Potatoes VA resources. Members are responsible for complying with the licenses of the software and content they use.</p></details>
+          <details class="rule"><summary>7. Membership</summary><p>Potatoes VA reserves the right to suspend or terminate membership where a member seriously or repeatedly violates these rules or applicable network policies.</p></details>
+          <details class="rule"><summary>8. Changes</summary><p>Potatoes VA may update these rules when necessary. Members are responsible for reviewing the current version of the rules.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="join">
+      <div class="container">
+        <div class="join-wrap">
+          <div>
+            <h2>Join Potatoes VA</h2>
+            <h3>Requirements</h3>
+            <ul>
+              <li>A valid IVAO account.</li>
+              <li>A basic understanding of online flight simulation.</li>
+              <li>Respect for IVAO rules and other community members.</li>
+              <li>Agreement to our Terms and Privacy Policy.</li>
+            </ul>
+            <p>There are no real-world financial costs to join Potatoes VA.</p>
+          </div>
+          <div>
+            <h3>Getting Started</h3>
+            <ol>
+              <li>Create or log in to your IVAO account.</li>
+              <li>Read the Potatoes VA Rules &amp; Regulations.</li>
+              <li>Submit your membership application.</li>
+              <li>Join our Discord community.</li>
+              <li>Start flying!</li>
+            </ol>
+            <div class="actions" style="justify-content:flex-start">
+              <a class="btn btn-primary" href="https://discord.gg/h7fjTyMU3" target="_blank" rel="noopener">Join our Discord</a>
+              <a class="btn btn-outline" href="https://ivao.aero/" target="_blank" rel="noopener">IVAO Website</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact">
+        <div class="section-heading">
+          <h2>Contact Us</h2>
+          <p>Have a question? Get in touch with the Potatoes VA team.</p>
+        </div>
+        <p>Email: </p>
+        <p>Community: <a href="https://discord.gg/h7fjTyMU3" target="_blank" rel="noopener">Potatoes VA Discord</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year">2026</span> Potatoes VA. All rights reserved.</p>
+      <p>Fly. Have Fun. Stay Connected.</p>
+    </div>
+  </footer>
+  <script>
+    // Automatically keep the copyright year current.
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
