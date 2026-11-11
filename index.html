@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Potatoes VA — a friendly, relaxed virtual airline on IVAO. Fly. Have Fun. Stay Connected.">
   <meta name="theme-color" content="#101d32">
-  <title>Potatoes VA | Fly. Have Fun. Stay Connected.</title>
+  <title>Potatoes VA</title>
   <style>
     :root {
       --navy: #101d32;
@@ -56,7 +56,7 @@
       letter-spacing: .16em; font-size: .78rem; font-weight: 700;
       margin-bottom: 14px;
     }
-    h1 { font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.08; margin: 0 0 18px; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.08; margin: 0 0 18px; }
     .hero p { max-width: 680px; margin: 0 auto 28px; color: #d7e4f2; font-size: 1.12rem; }
     .actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
     .btn {
@@ -120,13 +120,14 @@
 <body>
   <header>
     <nav class="container nav" aria-label="Main navigation">
-      <a class="brand" href="#home">POTATOES VA</a>
+      <a class="brand" href="/">
+        <img src="/assets/images/index-logo100x100.png" alt="Potatoes VA Logo" width="40" height="40" style="vertical-align:middle; margin-right:8px;">
+        Potatoes VA
+      </a>
       <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#values">Our Values</a>
-        <a href="#rules">Rules</a>
-        <a href="#join">Join Us</a>
-        <a href="#contact">Contact</a>
+        <a href="/index.html">Home</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="https://fshub.io/dashboard" target="_blank" rel="noopener noreferrer">Crew Login</a>
       </div>
     </nav>
   </header>
@@ -135,10 +136,9 @@
     <section class="hero" id="home">
       <div class="container">
         <span class="eyebrow">Virtual Airline · IVAO</span>
-        <h1>Fly. Have Fun.<br>Stay Connected.</h1>
+        <h1>Fly. Have Fun. Stay Connected.</h1>
         <p>Fly with us on IVAO, explore the world, and enjoy a relaxed and friendly virtual airline experience.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="#join">Join Potatoes VA</a>
           <a class="btn btn-outline" href="https://ivao.aero/" target="_blank" rel="noopener">Visit IVAO</a>
         </div>
       </div>
@@ -240,8 +240,7 @@
           <h2>Contact Us</h2>
           <p>Have a question? Get in touch with the Potatoes VA team.</p>
         </div>
-        <p>Email: </p>
-        <p>Community: <a href="https://discord.gg/h7fjTyMU3" target="_blank" rel="noopener">Potatoes VA Discord</a></p>
+        <p>Email: <img src="/assets/images/index-email.png" alt="Email Icon" style="vertical-align:middle; margin-right:8px;"></p>
       </div>
     </section>
   </main>
@@ -249,7 +248,6 @@
   <footer>
     <div class="container">
       <p>© <span id="year">2026</span> Potatoes VA. All rights reserved.</p>
-      <p>Fly. Have Fun. Stay Connected.</p>
     </div>
   </footer>
   <script>

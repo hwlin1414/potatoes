@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Potatoes VA — a friendly, relaxed virtual airline on IVAO. Fly. Have Fun. Stay Connected.">
+  <meta name="theme-color" content="#101d32">
+  <title>Potatoes VA</title>
+  <style>
+    :root {
+      --navy: #101d32;
+      --navy-2: #172943;
+      --blue: #6db9ff;
+      --cream: #f5f7fb;
+      --ink: #18263a;
+      --muted: #64748b;
+      --white: #fff;
+      --line: #e5eaf1;
+      --radius: 18px;
+      --shadow: 0 14px 35px rgba(16, 29, 50, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .container { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(16, 29, 50, .96);
+      backdrop-filter: blur(10px);
+      color: var(--white);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .nav {
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .brand { color: white; text-decoration: none; font-weight: 800; letter-spacing: .04em; }
+    .nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
+    .nav-links a { color: #dbe7f5; text-decoration: none; font-size: .93rem; }
+    .nav-links a:hover { color: var(--blue); }
+    .hero {
+      color: white; text-align: center; padding: 112px 0 105px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(109,185,255,.24), transparent 55%),
+        linear-gradient(135deg, #101d32, #1b3858 65%, #10243b);
+    }
+    .eyebrow {
+      display: inline-block; color: #b8dcff; text-transform: uppercase;
+      letter-spacing: .16em; font-size: .78rem; font-weight: 700;
+      margin-bottom: 14px;
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.08; margin: 0 0 18px; }
+    .hero p { max-width: 680px; margin: 0 auto 28px; color: #d7e4f2; font-size: 1.12rem; }
+    .actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 11px 20px; border-radius: 999px;
+      font-weight: 700; text-decoration: none; transition: transform .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--blue); color: #10213a; }
+    .btn-outline { border: 1px solid rgba(255,255,255,.55); color: white; }
+    section { padding: 76px 0; scroll-margin-top: 80px; }
+    .section-heading { text-align: center; margin: 0 auto 38px; max-width: 720px; }
+    .section-heading h2 { color: var(--navy); font-size: clamp(1.9rem, 4vw, 2.6rem); margin: 0 0 8px; }
+    .section-heading p { color: var(--muted); margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 28px; align-items: stretch; }
+    .panel, .card, .rule {
+      background: white; border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .panel { padding: 30px; }
+    .panel h3 { margin-top: 0; color: var(--navy); }
+    .callsigns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .callsign {
+      padding: 17px 10px; border-radius: 14px; text-align: center;
+      background: #edf5fd;
+    }
+    .callsign strong { display: block; color: var(--navy); font-size: 1.45rem; }
+    .callsign span { color: var(--muted); font-size: .82rem; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { padding: 25px; }
+    .card .symbol { font-size: 1.7rem; }
+    .card h3 { margin: 8px 0 5px; color: var(--navy); }
+    .card p { color: var(--muted); margin: 0; }
+    .rules { display: grid; gap: 12px; max-width: 850px; margin: auto; }
+    .rule { padding: 0 20px; box-shadow: none; }
+    .rule summary { cursor: pointer; padding: 17px 0; color: var(--navy); font-weight: 750; }
+    .rule p { color: var(--muted); margin: 0 0 18px; }
+    .join-wrap {
+      background: var(--navy); color: white; border-radius: 26px;
+      padding: clamp(26px, 5vw, 48px); display: grid;
+      grid-template-columns: 1fr 1fr; gap: 38px;
+    }
+    .join-wrap h2 { margin-top: 0; font-size: 2rem; }
+    .join-wrap p, .join-wrap li { color: #d4e0ee; }
+    .join-wrap ul, .join-wrap ol { padding-left: 21px; }
+    .join-wrap .btn-outline { border-color: #8aa6c4; }
+    .contact { text-align: center; }
+    .contact a { color: #1768a8; font-weight: 700; }
+    footer { background: #0b1525; color: #b8c6d8; text-align: center; padding: 25px 0; font-size: .9rem; }
+    footer p { margin: 4px 0; }
+    @media (max-width: 760px) {
+      .nav { padding: 13px 0; align-items: flex-start; flex-direction: column; gap: 8px; }
+      .nav-links { gap: 13px; }
+      .hero { padding: 82px 0 78px; }
+      .about-grid, .join-wrap { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+      .callsigns { grid-template-columns: 1fr; }
+      section { padding: 58px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="/">
+        <img src="/assets/images/index-logo100x100.png" alt="Potatoes VA Logo" width="40" height="40" style="vertical-align:middle; margin-right:8px;">
+        Potatoes VA
+      </a>
+      <div class="nav-links">
+        <a href="/index.html">Home</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="https://fshub.io/dashboard" target="_blank" rel="noopener noreferrer">Crew Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="privacy-policy">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Privacy Policy</h2>
+        </div>
+        <div class="privacy-policy-grid">
+          <p>Potatoes VA ("Potatoes VA", "we", "us", or "our") is a virtual airline and online aviation community created for flight simulation purposes.</p>
+          <p>We respect your privacy and are committed to protecting your personal data.</p>
+
+          <h3>1. Information We Collect</h3>
+          <p>Depending on how you interact with Potatoes VA, we may collect:
+          <ul>
+            <li>Name or display name</li>
+            <li>IVAO VID</li>
+            <li>Email address</li>
+            <li>Discord username or user ID</li>
+            <li>Membership and flight activity information</li>
+            <li>Technical information such as IP address, browser information and access logs</li>
+            <li>Other information voluntarily provided by you</li>
+          </ul>
+          <p>We only collect information that is reasonably necessary for operating the VA and providing our services.</p>
+
+          <h3>2. How We Use Your Information</h3>
+          <p>Your information may be used to:</p>
+          <ul>
+            <li>Create and manage your Potatoes VA membership</li>
+            <li>Verify your IVAO account</li>
+            <li>Maintain pilot and operational records</li>
+            <li>Process flight reports or other VA activities</li>
+            <li>Communicate with members</li>
+            <li>Maintain website security and prevent abuse</li>
+            <li>Comply with applicable laws and network policies</li>
+          </ul>
+
+          <h3>3. IVAO Information</h3>
+          <p>Potatoes VA may process information relating to your IVAO account in order to provide virtual airline services.</p>
+          <p>IVAO are separate organizations and maintain their own privacy policies. Members should review the applicable privacy policies of those networks.</p>
+
+          <h3>4. Third-Party Services</h3>
+          <p>Potatoes VA may use third-party services such as:</p>
+          <ul>
+            <li>Website hosting providers</li>
+            <li>Discord</li>
+            <li>Flight tracking or VA management platforms</li>
+            <li>Email providers</li>
+            <li>Analytics services</li>
+          </ul>
+          <p>Such services may process data according to their own privacy policies.</p>
+
+
+          <h3>5. Public Information</h3>
+          <p>Some information may be displayed publicly as part of normal VA operations, such as:</p>
+          <ul>
+            <li>Pilot name or display name</li>
+            <li>IVAO VID where applicable</li>
+            <li>Awards or achievements</li>
+          </ul>
+          <p>We will avoid publishing unnecessary personal information.</p>
+
+          <h3>6. Data Retention</h3>
+          <p>We retain personal information only for as long as reasonably necessary for the purposes described in this policy, unless a longer retention period is required by law or necessary to resolve disputes or enforce our rules.</p>
+
+          <h3>7. Your Rights</h3>
+          <p>Depending on applicable law, you may have rights to:</p>
+          <ul>
+            <li>Request access to your personal data</li>
+            <li>Request correction of inaccurate information</li>
+            <li>Request deletion of your personal information</li>
+            <li>Object to or restrict certain processing</li>
+            <li>Withdraw consent where processing is based on consent</li>
+            <li>Request information about how your data is processed</li>
+          </ul>
+          <p>Requests may be submitted using our official contact details.</p>
+
+          <h3>8. Data Security</h3>
+          <p>We take reasonable technical and organizational measures to protect personal information from unauthorized access, loss, misuse or disclosure.</p>
+          <p>Our website should use HTTPS for all connections involving personal information.</p>
+
+          <h3>9. Cookies</h3>
+          <p>Our website may use necessary cookies to provide website functionality.</p>
+          <p>If we use non-essential analytics or tracking cookies, we will provide appropriate information and consent mechanisms where required.</p>
+
+          <h3>10. Children's Privacy</h3>
+          <p>Potatoes VA is a flight simulation community. Membership requirements may be subject to applicable age restrictions imposed by the services or networks used by our members.</p>
+
+          <h3>11. Changes to This Policy</h3>
+          <p>We may update this Privacy Policy from time to time.</p>
+          <p>The latest version will always be published on this page.</p>
+
+          <h3>12. Contact</h3>
+          <p>For privacy-related requests, please contact:</p>
+          <p>Potatoes VA Website: <a href="https://www.potatoes-va.com/" target="_blank" rel="noopener noreferrer">https://www.potatoes-va.com/</a></p>
+
+          <p></p>
+          <p>This Privacy Policy applies to Potatoes VA services only and does not replace or override the privacy policies of IVAO, Discord, or other third-party services.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year">2026</span> Potatoes VA. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    // Automatically keep the copyright year current.
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
